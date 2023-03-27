@@ -14,22 +14,22 @@ public class GameWindow extends JPanel {
         frame.setSize(600, 600);
 
 
-        JPanel panel = new JPanel();
-        drawGameField(panel);
-
-
-        frame.setVisible(true);
-    }
-
-    public void drawGameField(JPanel panel){
         int rows = frame.getHeight() / squareSize;
         int cols = frame.getWidth() / squareSize;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                panel.setPreferredSize(new Dimension(squareSize, squareSize));
-                frame.add(panel);
-            }
+
+        JPanel panel = new JPanel(new GridLayout(rows, cols));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panel.setPreferredSize(new Dimension(cols * squareSize, rows * squareSize));
+
+        for (int i = 0; i < rows * cols; i++) {
+            JPanel cell = new JPanel();
+            cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            panel.add(cell);
         }
+
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
     }
 
     @Override
