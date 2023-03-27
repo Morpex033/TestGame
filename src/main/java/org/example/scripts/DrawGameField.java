@@ -22,6 +22,7 @@ public class DrawGameField extends JPanel {
             for (int j = 0; j < cols; j++) {
                 JPanel panel = new JPanel();
                 panel.setPreferredSize(new Dimension(squareSize, squareSize));
+                panel.setVisible(true);
                 frame.add(panel);
             }
         }
